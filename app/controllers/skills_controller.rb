@@ -9,7 +9,6 @@ module Admin
       if @skill.save
         redirect_to skill_path(@skill)
       else
-        flash[:alert] = 'erreur'
         render :new
       end
     end
@@ -18,9 +17,9 @@ module Admin
       @skills = Skill.all
     end
 
-    def show
-      @skill = Skill.find(params[:id])
-    end
+    # def show
+    #   @skill = Skill.find(params[:id])
+    # end
 
     def edit
       @skill = Skill.find(params[:id])

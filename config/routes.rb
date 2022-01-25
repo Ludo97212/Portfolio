@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :projects
-  resources :skills
+  resources :skills, except: :show
   resources :project_skills, only: [:new, :create]
 
   ##############
