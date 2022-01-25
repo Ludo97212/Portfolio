@@ -5,6 +5,8 @@ ruby '2.7.4'
 
 gem 'devise'
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Action_text
 gem "actiontext", require: "action_text"
 # gem "image_processing", "~> 1.2" # for Active Storage variants
