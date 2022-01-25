@@ -4,8 +4,8 @@
 
 <h4>Plus en détail :</h4>
 <p><%= @project.description %></p>
-<% @project.skills.each do |skill, rating| %>
-  <p><i><%= skill : rating %></i></p>
+<% @project.skills.each do |skill| %>
+  <p><i><%= skill.title : skill.rating %></i></p>
 <% end %>
 <%= @project.date_start %>
 <% if @project.finished == true %>
