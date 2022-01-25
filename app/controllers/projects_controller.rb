@@ -39,7 +39,7 @@ module Admin
     private
 
     def flat_params
-      params.require(:project).permit(:title, :description, :finished, :date_start, :date_end, :url, :collaborator_desc)
+      params.require(:project).permit(:title, :description, :finished, :date_start, :date_end, :url, :collaborator_desc, :photo)
     end
   end
 end
