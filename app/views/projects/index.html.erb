@@ -1,0 +1,5 @@
+<% @projects.each do |proj| %>
+  <%= link_to proj.title, , project_path(project) %>
+  <%= cl_image_tag proj.photo.key, height: 250, width: 250, crop: :fill %>
+  <%= proj.url %>
+<% end %>

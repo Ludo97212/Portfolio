@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.4'
 
+gem 'devise'
+
+# Action_text
+gem "actiontext", require: "action_text"
+# gem "image_processing", "~> 1.2" # for Active Storage variants
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.4'
 # Use postgresql as the database for Active Record
