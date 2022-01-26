@@ -18,8 +18,8 @@ module Admin
 
     private
 
-    def flat_params
-      params.require(:project_skill).permit(:title, :rating)
+    def project_skill_params
+      params.require(:project_skill).permit(:project_id, :skill_id)
     end
   end
 end

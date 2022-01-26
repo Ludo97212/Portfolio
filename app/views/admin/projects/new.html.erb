@@ -1,4 +1,5 @@
 <% simple_form_for @project do |f|  %>
+<%# <% simple_form_for(@project, url: admin_projects_path, :method => :post, html: {id: 'admin_project_form'}) do |f| %>
   <%= f.input :title %>
   <%= f.input :description, as: :rich_text_area %>
   <%= f.input :date_start, as: :date %>
@@ -8,3 +9,4 @@
   <%= f.input :collaborators_desc %>
   <%= f.input :photo, as: :file %>
 <% end %>
+<h4>test</h4>

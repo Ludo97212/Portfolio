@@ -1,0 +1,15 @@
+<%= link_to "Add project", new_admin_project_path, class: "btn btn-primary" %>
+<h1>Mes projets :</h1>
+<% if @projects.empty? %>
+  <h2>TEST If pour @projects.empty?</h2>
+<% else %>
+  <% @projects.each do |proj| %>
+    <%= link_to proj.title, project_path(proj) %>
+    <% if proj.photo.attached? %>
+      <%= cl_image_tag proj.photo.key, height: 250, width: 250, crop: :fill %>
+    <% else %>
+      <img src="https://atasouthport.com/wp-content/uploads/2017/04/default-image.jpg">
+    <% end %>
+    <%= proj.url %>
+  <% end %>
+<% end %>
