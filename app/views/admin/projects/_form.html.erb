@@ -1,15 +1,25 @@
 <%# <%= simple_form_for @project do |f|  %>
 <%# <% simple_form_for(@project, url: admin_projects_path, :method => :post, html: {id: 'admin_project_form'}) do |f| %>
 <%= simple_form_for(@project, url: projects_path, :method => :post) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description, as: :rich_text_area %>
-  <%= f.input :skills, as: :select,
-      collection: Skill.pluck(:title, :id) %>
-  <%= f.input :date_start, as: :date %>
-  <%= f.input :date_end, as: :date %>
-  <%= f.input :finished %>
-  <%= f.input :url %>
-  <%= f.input :collaborators_desc %>
-  <%= f.input :photo, as: :file %>
+  <h4>Nom du projet</h4>
+    <%= f.input :title, label: false %>
+  <h4>Détails du projet</h4>
+    <%= f.input :description, as: :rich_text_area, label: false %>
+  <h4>Compétences utilisées pour ce projet</h4>
+    <%= f.input :skills, as: :select,
+        collection: Skill.pluck(:title, :id), label: false %>
+  <h4>Date de début du projet</h4>
+    <%= f.input :date_start, as: :date, label: false %>
+  <h4>Est-il terminé?</h4>
+    <%= f.input :finished, label: false %>
+  <h4>Date de fin</h4>
+    <%= f.input :date_end, as: :date, label: false %>
+  <h4>Lien du projet(url)</h4>
+    <%= f.input :url, label: false %>
+  <h4>Mes collaborateurs sur ce projet</h4>
+    <%= f.input :collaborators_desc, as: :rich_text_area, label: false %>
+  <h4>Image</h4>
+    <%= f.input :photo, as: :file, label: false %>
+  <%# <%= f.association :skills, :as => :collection_select, collection: Skill.all %>
   <%= f.submit "Enregistrer", class: "btn btn-primary" %>
 <% end %>
