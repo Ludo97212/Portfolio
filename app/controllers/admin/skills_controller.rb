@@ -1,39 +1,41 @@
-class SkillsController < ApplicationController
-  def new
-    @skill = Skill.new
-  end
-
-  def create
-    @skill = Skill.new
-    if @skill.save
-      redirect_to skill_path(@skill)
-    else
-      render :new
+module Admin
+  class SkillsController < AdminController
+    def new
+      @skill = Skill.new
     end
-  end
 
-  def index
-    # @skills = Skill.all
-    @skills = Skill.joins(:projects).all
-  end
+    def create
+      @skill = Skill.new
+      if @skill.save
+        redirect_to skill_path(@skill)
+      else
+        render :new
+      end
+    end
 
-  def edit
-    @skill = Skill.find(params[:id])
-  end
+    def index
+      # @skills = Skill.all
+      @skills = Skill.joins(:projects).all
+    end
 
-  def update
-    @skill = Skill.find(params[:id])
-    @skill.update(skill_params)
-  end
+    def edit
+      @skill = Skill.find(params[:id])
+    end
 
-  def destroy
-    @skill = Skill.find(params[:id])
-    @skill.destroy
-  end
+    def update
+      @skill = Skill.find(params[:id])
+      @skill.update(skill_params)
+    end
 
-  private
+    def destroy
+      @skill = Skill.find(params[:id])
+      @skill.destroy
+    end
 
-  def skill_params
-    params.require(:skill).permit(:title, :rating)
+    private
+
+    def skill_params
+      params.require(:skill).permit(:title, :rating)
+    end
   end
 end

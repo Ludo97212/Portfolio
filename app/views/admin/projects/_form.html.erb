@@ -1,8 +1,10 @@
 <%# <%= simple_form_for @project do |f|  %>
 <%# <% simple_form_for(@project, url: admin_projects_path, :method => :post, html: {id: 'admin_project_form'}) do |f| %>
-<%= simple_form_for(@project, url: admin_projects_path, :method => :post, html: { class: "mb-4"}) do |f| %>
+<%= simple_form_for(@project, url: projects_path, :method => :post) do |f| %>
   <%= f.input :title %>
   <%= f.input :description, as: :rich_text_area %>
+  <%= f.input :skills, as: :select,
+      collection: Skill.pluck(:title, :id) %>
   <%= f.input :date_start, as: :date %>
   <%= f.input :date_end, as: :date %>
   <%= f.input :finished %>
