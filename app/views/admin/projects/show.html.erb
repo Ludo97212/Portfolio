@@ -1,13 +1,14 @@
 <h1><%= @project.title %></h1>
-<%= cl_image_tag @project.photo.key %>
-<h4><%= @project.collaborators_desc %> </h4>
+<h4>Mes collaborateurs sur ce projet :</h4>
+<p><%= @project.collaborators_desc %></p>
+<%= cl_image_tag @project.photo.key, width: 600, height: 600, crop: :fill %>
 
 <h4>Plus en détail :</h4>
 <p><%= @project.description %></p>
 <% @project.skills.each do |skill| %>
-  <p><i><%= skill.title : skill.rating %></i></p>
+  <p><em><%= skill.title : skill.rating %> <i class="fas fa-star"></i></em></p>
 <% end %>
-<%= @project.date_start %>
+<p>Début du projet : <%= @project.date_start %></p>
 <% if @project.finished == true %>
-  <%= @project.date_end %>
+  <p>Terminé le : <%= @project.date_end %></p>
 <% end %>

@@ -4,12 +4,14 @@
   <h2>TEST If pour @projects.empty?</h2>
 <% else %>
   <% @projects.each do |proj| %>
-    <%= link_to proj.title, project_path(proj) %>
     <% if proj.photo.attached? %>
-      <%= cl_image_tag proj.photo.key, height: 250, width: 250, crop: :fill %>
+      <div class="card-proj" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path proj.photo.key, crop: :fill %>')">
     <% else %>
-      <img src="https://atasouthport.com/wp-content/uploads/2017/04/default-image.jpg">
+      <div class="card-proj" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://atasouthport.com/wp-content/uploads/2017/04/default-image.jpg)">
     <% end %>
-    <%= proj.url %>
+      <%= link_to proj.title, project_path(proj) %>
+    <%# <%= cl_image_tag proj.photo.key, height: 250, width: 250, crop: :fill %>
+    <%# <img src="https://atasouthport.com/wp-content/uploads/2017/04/default-image.jpg"> %>
+      </div>
   <% end %>
 <% end %>
