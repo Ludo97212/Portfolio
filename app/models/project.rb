@@ -6,4 +6,5 @@ class Project < ApplicationRecord
   has_rich_text :collaborators_desc
   has_one_attached :photo
   validates :title, :description, :date_start, presence: true
+  # validates :description, length: { minimum: 140 }
 end

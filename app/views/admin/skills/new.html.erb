@@ -1,1 +1,5 @@
-<%= render "form" %>
+<%= simple_form_for(@skill, url: admin_skills_path, :method => :post) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :rating %>
+  <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+<% end %>

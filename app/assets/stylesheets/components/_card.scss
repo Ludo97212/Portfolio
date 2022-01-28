@@ -1,4 +1,4 @@
-.card-proj {
+.card-img {
   background-size: cover;
   background-position: center;
   height: 400px;
@@ -17,6 +17,21 @@
     text-decoration: none;
     &:hover {
       color: yellow;
+    }
+  }
+}
+
+.card-index {
+  width: 900px;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  border: 2px black;
+  margin: 50px;
+  .part {
+    padding: 35px 15px 15px 25px;
+    a {
+      text-decoration: none;
     }
   }
 }

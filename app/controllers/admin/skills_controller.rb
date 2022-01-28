@@ -7,8 +7,9 @@ module Admin
     def create
       @skill = Skill.new
       if @skill.save
-        redirect_to skill_path(@skill)
+        redirect_to skill_path
       else
+        flash[:alert] = 'Erreur !!!'
         render :new
       end
     end
@@ -25,6 +26,12 @@ module Admin
     def update
       @skill = Skill.find(params[:id])
       @skill.update(skill_params)
+      if @skill.save
+        redirect_to skill_path
+      else
+        flash[:alert] = 'Erreur !!!'
+        render :new
+      end
     end
 
     def destroy

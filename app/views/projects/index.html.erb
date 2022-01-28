@@ -1,17 +1,20 @@
 <%= link_to "Add project", new_admin_project_path, class: "btn btn-primary" %>
 <h1>Mes projets :</h1>
-<% if @projects.empty? %>
-  <h2>TEST If pour @projects.empty?</h2>
-<% else %>
-  <% @projects.each do |proj| %>
+<% @projects.each do |proj| %>
+<div class="card-index">
+  <div class="part">
     <% if proj.photo.attached? %>
-      <div class="card-proj" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path proj.photo.key, crop: :fill %>')">
+      <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path proj.photo.key, crop: :fill %>')">
     <% else %>
-      <div class="card-proj" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://atasouthport.com/wp-content/uploads/2017/04/default-image.jpg)">
+      <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://atasouthport.com/wp-content/uploads/2017/04/default-image.jpg)">
     <% end %>
       <%= link_to proj.title, project_path(proj) %>
-    <%# <%= cl_image_tag proj.photo.key, height: 250, width: 250, crop: :fill %>
-    <%# <img src="https://atasouthport.com/wp-content/uploads/2017/04/default-image.jpg"> %>
       </div>
-  <% end %>
+  </div>
+  <div class="part">
+    <h4>Description :</h4>
+    <%= proj.description %>
+    <em><%= link_to proj.url %></em>
+  </div>
+</div>
 <% end %>

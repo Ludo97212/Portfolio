@@ -1,2 +1,42 @@
-<h1>Projet :</h1>
-<%= render "form" %>
+<%= simple_form_for(@project, url: admin_projects_path, :method => :post) do |f| %>
+  <h4>Nom du projet</h4>
+    <%= f.input :title, label: false %>
+  <h4>Détails du projet</h4>
+    <%= f.input :description, as: :rich_text_area, label: false %>
+  <h4>Compétences utilisées pour ce projet</h4>
+    <%= f.input :skills, as: :check_boxes,
+        collection: Skill.pluck(:title, :id), label: false , html5: true%>
+
+  <div class="row">
+    <div class="col">
+      <h4>Date de début du projet</h4>
+        <%= f.input :date_start, as: :date, label: false, html5: true %>
+    </div>
+    <div class="col">
+      <h4>Le projet est-il bouclé?</h4>
+      <%= f.input :finished, as: :radio_buttons, label: "",
+        collection: [[false, "En cours"],[true, "Terminé !"]],
+        label_method: :second, value_method: :first %>
+    </div>
+    <div class="col">
+      <h4>Date de fin</h4>
+      <%= f.input :date_end, as: :date, label: false, html5: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h4>Lien du projet(url)</h4>
+      <%= f.input :url, label: false %>
+    </div>
+    <div class="col">
+      <h4>Image</h4>
+      <%= f.input :photo, as: :file, label: false %>
+    </div>
+  </div>
+
+  <h4>Mes collaborateurs sur ce projet</h4>
+    <%= f.input :collaborators_desc, as: :rich_text_area, label: false %>
+
+  <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+<% end %>

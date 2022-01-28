@@ -5,12 +5,13 @@ module Admin
     end
 
     def create
-      @project = Project.new
-      @project.skills = params[:skills []]
+      @project = Project.new(project_params)
+      # @project.skills = params[:skills]
       if @project.save
+        flash[:notice] = 'Validé'
         redirect_to project_path(@project)
       else
-        flash[:alert] = 'erreur'
+        flash[:alert] = 'Erreur !!!'
         render :new
       end
     end
@@ -30,6 +31,12 @@ module Admin
     def update
       @project = Project.find(params[:id])
       @project.update(project_params)
+      if @project.save
+        redirect_to project_path
+      else
+        flash[:alert] = 'Erreur !!!'
+        render :new
+      end
     end
 
     def destroy
@@ -40,7 +47,7 @@ module Admin
     private
 
     def project_params
-      params.require(:project).permit(:title, :description, :skills [], :finished, :date_start, :date_end, :url, :collaborator_desc, :photo)
+      params.require(:project).permit(:title, :description, :skills, :finished, :date_start, :date_end, :url, :collaborator_desc, :photo)
     end
   end
 end
